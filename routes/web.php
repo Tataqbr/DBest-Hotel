@@ -33,3 +33,9 @@ Route::get('privacy', function () {
 Route::get('refund', function () {
     return view('guest.refund');
 })->name('refund');
+
+// Admin Route
+
+Route::get('dashboard', function () {
+    return view('admin.dashboard');
+});
