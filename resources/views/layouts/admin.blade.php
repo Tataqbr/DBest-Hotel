@@ -43,8 +43,8 @@
         .animate-slow-zoom { animation: slow-zoom 20s infinite alternate; }
         @keyframes slow-zoom { from { transform: scale(1); } to { transform: scale(1.1); } }
     </style>
-</head>yle>
 </head>
+
 <body class="bg-[#F8FAFC] text-slate-700 overflow-hidden">
 
     <div class="flex h-screen" x-data="{ sidebarOpen: true }">

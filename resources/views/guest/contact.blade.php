@@ -64,45 +64,61 @@
                     </div>
                 </div>
 
-                {{-- Right: Inquiry Form --}}
-                <div class="lg:col-span-7">
-                    <div class="bg-gray-50 p-10 lg:p-16 border border-gray-100 shadow-sm relative overflow-hidden">
-                        {{-- Subtle background text --}}
-                        <span class="absolute -right-8 -bottom-8 font-luxury text-[120px] text-gray-200/40 select-none">Contact</span>
-                        
-                        <form action="#" class="relative z-10 space-y-8">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div class="space-y-2">
-                                    <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-dark">Full Name</label>
-                                    <input type="text" placeholder="John Doe" class="w-full bg-transparent border-b border-gray-300 py-3 focus:border-gold outline-none transition-all text-sm font-light placeholder:text-gray-300">
-                                </div>
-                                <div class="space-y-2">
-                                    <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-dark">Email Address</label>
-                                    <input type="email" placeholder="example@mail.com" class="w-full bg-transparent border-b border-gray-300 py-3 focus:border-gold outline-none transition-all text-sm font-light placeholder:text-gray-300">
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-dark">Subject</label>
-                                <select class="w-full bg-transparent border-b border-gray-300 py-3 focus:border-gold outline-none transition-all text-sm font-light text-gray-500">
-                                    <option value="">Reservation Inquiry</option>
-                                    <option value="">Event & Wedding Package</option>
-                                    <option value="">Feedback & Suggestion</option>
-                                    <option value="">Payment Gateway Inquiry</option>
-                                </select>
-                            </div>
+                {{-- Right: Informative Content (Replaces Form) --}}
+<div class="lg:col-span-7">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        {{-- Card 1: Arrival & Transportation --}}
+        <div class="bg-gray-50 p-8 border border-gray-100 group hover:bg-dark transition-all duration-500">
+            <span class="text-gold font-luxury text-4xl block mb-6 group-hover:text-white">01</span>
+            <h3 class="text-dark font-bold text-xs uppercase tracking-[0.2em] mb-4 group-hover:text-gold">Arrival Information</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed group-hover:text-gray-300">
+                Located in the heart of Bandung, we are 15 minutes away from Stasiun Bandung and 20 minutes from Pasteur Toll Gate. We offer airport/station pick-up services upon request.
+            </p>
+            
+        </div>
 
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-dark">Your Message</label>
-                                <textarea rows="4" placeholder="How can we assist you?" class="w-full bg-transparent border-b border-gray-300 py-3 focus:border-gold outline-none transition-all text-sm font-light resize-none placeholder:text-gray-300"></textarea>
-                            </div>
+        {{-- Card 2: Essential FAQs --}}
+        <div class="bg-gray-50 p-8 border border-gray-100 group hover:bg-dark transition-all duration-500">
+            <span class="text-gold font-luxury text-4xl block mb-6 group-hover:text-white">02</span>
+            <h3 class="text-dark font-bold text-xs uppercase tracking-[0.2em] mb-4 group-hover:text-gold">Guest Policies</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed group-hover:text-gray-300">
+                Standard check-in is at 14:00 and check-out at 12:00. Early check-in is subject to availability. Our reception and security are active 24/7 for your convenience.
+            </p>
+            <div class="mt-6">
+                <a href="{{ route('terms') }}" class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-gold/30 pb-1">View Full FAQ</a>
+            </div>
+        </div>
 
-                            <button type="submit" class="w-full bg-dark text-white py-5 text-[11px] font-bold uppercase tracking-[0.4em] hover:bg-gold transition-all duration-700 shadow-xl shadow-black/10">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
+    </div>
+
+    {{-- Highlight Box: Instant Support --}}
+    <div class="mt-8 bg-dark p-10 relative overflow-hidden group">
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <h3 class="text-white font-luxury text-3xl italic mb-2">Need Instant Response?</h3>
+                <p class="text-gray-400 text-sm font-light">Skip the email. Chat directly with our concierge via WhatsApp for faster assistance.</p>
+            </div>
+            <a href="https://wa.me/628112223334" target="_blank" class="bg-gold text-dark px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white transition-colors whitespace-nowrap">
+                Chat on WhatsApp
+            </a>
+        </div>
+        {{-- Decorative background icon --}}
+        <i class="fab fa-whatsapp absolute -right-4 -bottom-4 text-white/5 text-9xl"></i>
+    </div>
+
+    {{-- Nearby Landmarks --}}
+    <div class="mt-12">
+        <h4 class="text-dark font-bold text-[10px] uppercase tracking-[0.3em] mb-6 flex items-center">
+            <span class="w-8 h-[1px] bg-gold mr-4"></span> Nearby Destinations
+        </h4>
+        <div class="flex flex-wrap gap-4">
+            <span class="px-4 py-2 bg-gray-100 text-[10px] text-gray-500 uppercase tracking-widest">Alun-Alun Bandung (5 min)</span>
+            <span class="px-4 py-2 bg-gray-100 text-[10px] text-gray-500 uppercase tracking-widest">Pasar Baru (8 min)</span>
+            <span class="px-4 py-2 bg-gray-100 text-[10px] text-gray-500 uppercase tracking-widest">Sudirman Street Food (10 min)</span>
+        </div>
+    </div>
+</div>
 
             </div>
         </div>

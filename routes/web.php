@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\PaymentController;
+// use App\Http\Controllers\BookingController;
 
 Route::get('/', function () {
     return view('guest.home');
@@ -40,6 +45,9 @@ Route::get('refund', function () {
 
 // Admin Route
 
-Route::get('dashboard', function () {
-    return view('admin.dashboard');
-});
+Route::get('Dashboard Admin', [AdminController::class, 'Dashboard'])->name('dashboard-admin');
+
+// Auth
+Route::get('Login Admin', [AuthController::class, 'showLoginSAdmin'])->name('login-admin');
+Route::post('Proccess Login Admin', [AuthController::class, 'loginSAdmin'])->name('proccess-login-admin');
+Route::post('Logout Admin', [AuthController::class, 'LogoutSAdmin'])->name('logout-admin');
