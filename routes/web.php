@@ -10,9 +10,9 @@ Route::get('about-us', function () {
     return view('guest.about');
 })->name('about-us');
 
-Route::get('accomodation', function () {
-    return view('guest.accomodation');
-})->name('accomodation');
+Route::get('accommodation', function () {
+    return view('guest.accommodation');
+})->name('accommodation');
 
 Route::get('dining', function () {
     return view('guest.dining');
@@ -21,6 +21,10 @@ Route::get('dining', function () {
 Route::get('event', function () {
     return view('guest.event');
 })->name('event');
+
+Route::get('contact', function () {
+    return view('guest.contact');
+})->name('contact');
 
 Route::get('terms', function () {
     return view('guest.terms');

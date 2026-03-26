@@ -36,12 +36,12 @@
         {{-- Desktop Menu --}}
         <div class="hidden lg:flex gap-8 text-[11px] font-bold tracking-[0.2em] uppercase">
             <a href="{{ route('about-us') }}" class="hover:text-gold transition">About Us</a>
-            <a href="{{ route('accomodation') }}" class="hover:text-gold transition">Accommodations</a>
+            <a href="{{ route('accommodation') }}" class="hover:text-gold transition">Accommodations</a>
             <a href="{{ route('dining') }}" class="hover:text-gold transition">Dining</a>
             <a href="{{ route('event') }}" class="hover:text-gold transition">Events</a>
         </div>
 
-        <a href="/booking" class="hidden lg:block border border-gold px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition">Reserve Now</a>
+        <a href="{{ route('accommodation') }}" class="hidden lg:block border border-gold px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition">Reserve Now</a>
 
         {{-- Mobile Hamburger --}}
         <button @click="mobileOpen = true" class="lg:hidden p-2">
@@ -65,7 +65,7 @@
         </button>
 
         <a href="{{ route('about-us') }}" @click="mobileOpen = false" class="text-3xl font-luxury hover:text-gold">About Us</a>
-        <a href="{{ route('accomodation') }}" @click="mobileOpen = false" class="text-3xl font-luxury hover:text-gold">Accommodations</a>
+        <a href="{{ route('accommodation') }}" @click="mobileOpen = false" class="text-3xl font-luxury hover:text-gold">Accommodations</a>
         <a href="{{ route('dining') }}" @click="mobileOpen = false" class="text-3xl font-luxury hover:text-gold">Dining</a>
         <a href="{{ route('event') }}" @click="mobileOpen = false" class="text-3xl font-luxury hover:text-gold">Events</a>
     </div>
@@ -86,9 +86,10 @@
         <div>
             <h5 class="text-[10px] uppercase tracking-[0.3em] text-gold mb-6">Discover</h5>
             <ul class="text-[11px] space-y-4 text-gray-400 uppercase tracking-wider">
-                <li><a href="{{ route('accomodation') }}" class="hover:text-gold transition">Rooms & Suites</a></li>
+                <li><a href="{{ route('accommodation') }}" class="hover:text-gold transition">Rooms & Suites</a></li>
                 <li><a href="{{ route('dining') }}" class="hover:text-gold transition">D'Poet Restaurant</a></li>
                 <li><a href="{{ route('event') }}" class="hover:text-gold transition">Banquet & Meeting</a></li>
+                <li><a href="{{ route('contact') }}" class="hover:text-gold transition">Inquiries & Contact</a></li>
             </ul>
         </div>
 
@@ -105,7 +106,9 @@
         {{-- Location / Maps Placeholder --}}
         <div>
             <h5 class="text-[10px] uppercase tracking-[0.3em] text-gold mb-6">Location</h5>
-            <div class="w-full h-32 bg-gray-800 flex items-center justify-center text-[10px] text-gray-500 italic hover:bg-gray-700 transition cursor-pointer">Google Maps Preview</div>
+            <div class="w-full h-32 bg-gray-800 flex items-center justify-center text-[10px] text-gray-500 italic hover:bg-gray-700 transition cursor-pointer">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7328.557514733815!2d107.60332336438016!3d-6.930377587261665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89e736eb5ad%3A0xb4679720b2356d75!2sd&#39;best%20Hotel!5e1!3m2!1sid!2sid!4v1774517716240!5m2!1sid!2sid" style="border:0; filter: grayscale(100%) contrast(1.2) opacity(0.8); allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
     </div>
 

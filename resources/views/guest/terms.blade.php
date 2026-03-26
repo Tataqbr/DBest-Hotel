@@ -6,7 +6,7 @@
     {{-- 1. HERO SECTION (Consistent with other pages) --}}
     <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
         {{-- Foto latar belakang yang profesional & relevan --}}
-        <img src="https://i.pinimg.com/1200x/7a/a1/94/7aa19415266b8ad0ad570b7d2ecc3e8e.jpg" 
+        <img src="{{ asset('assets/terms.jpg') }}" 
              class="absolute w-full h-full object-cover scale-105 animate-slow-zoom" 
              alt="Legal Documentation">
         

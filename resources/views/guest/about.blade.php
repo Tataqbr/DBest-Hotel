@@ -4,7 +4,7 @@
 @section('content')
     {{-- 1. HEADER SECTION --}}
     <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <img src="https://i.pinimg.com/1200x/1a/f3/82/1af382c158f5ea1d3557dd92c81e757a.jpg" class="absolute w-full h-full object-cover" alt="About d'best Hotel">
+        <img src="{{ asset('assets/about-us.jpg') }}" class="absolute w-full h-full object-cover" alt="About d'best Hotel">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative text-center text-white px-6 mt-16">
             <span class="text-[10px] uppercase tracking-[0.5em] text-gold mb-4 block">Established with Passion</span>
@@ -18,7 +18,7 @@
             <div class="grid lg:grid-cols-2 gap-20 items-center">
                 <div class="relative">
                     <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-gold/20 -z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=1000" class="w-full h-[600px] object-cover shadow-2xl" alt="Hotel Interior">
+                    <img src="{{ asset('assets/vission-mission.avif') }}" class="w-full h-[600px] object-cover shadow-2xl" alt="Hotel Interior">
                 </div>
                 <div>
                     <span class="text-gold text-[10px] uppercase tracking-[0.4em] mb-6 block">Legacy of Excellence</span>
@@ -99,11 +99,11 @@
                 <p class="text-gray-600 leading-relaxed mb-10">
                     Our team is trained to anticipate your needs before you even voice them. At d'best Hotel, we don't just provide a room; we provide peace of mind for corporate travelers on duty and families creating lasting memories.
                 </p>
-                <a href="/contact" class="inline-block bg-dark text-white px-12 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500">Get in Touch</a>
+                <a href="{{ route('contact') }}" class="inline-block bg-dark text-white px-12 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500">Get in Touch</a>
             </div>
             <div class="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=600" class="rounded-sm" alt="Luxury Suite Detail">
-                <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=600" class="rounded-sm mt-12 shadow-2xl" alt="Hospitality Service">
+                <img src="{{ asset('assets/philosophy-1.avif') }}" class="rounded-sm" alt="Luxury Suite Detail">
+                <img src="{{ asset('assets/philosophy-2.avif') }}" class="rounded-sm mt-12 shadow-2xl" alt="Hospitality Service">
             </div>
         </div>
     </section>

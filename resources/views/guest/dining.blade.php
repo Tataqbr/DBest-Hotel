@@ -6,7 +6,7 @@
 {{-- 1. HERO SECTION - Aligned with Accommodations Page --}}
     <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
         {{-- Video/Image background yang konsisten dengan halaman sebelumnya --}}
-        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=2000" 
+        <img src="{{ asset('assets/dining.avif') }}" 
              class="absolute w-full h-full object-cover scale-105 animate-slow-zoom" 
              alt="Dining Experience">
         
@@ -38,8 +38,8 @@
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-6">
-                <img src="https://images.unsplash.com/photo-1577106263724-2c8e03bfe9cf?auto=format&fit=crop&q=80&w=600" class="h-96 w-full object-cover shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=600" class="h-96 w-full object-cover mt-16 shadow-2xl">
+                <img src="{{ asset('assets/culinary-1.avif') }}" class="h-96 w-full object-cover shadow-2xl">
+                <img src="{{ asset('assets/culinary-2.avif') }}" class="h-96 w-full object-cover mt-16 shadow-2xl">
             </div>
         </div>
     </section>

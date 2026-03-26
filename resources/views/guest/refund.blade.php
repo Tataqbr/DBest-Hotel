@@ -6,7 +6,7 @@
     {{-- 1. HERO SECTION (Consistent Photo-Based Layout) --}}
     <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
         {{-- Foto yang merepresentasikan layanan premium dan ketenangan --}}
-        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2000" 
+        <img src="{{ asset('assets/refunds.avif') }}" 
              class="absolute w-full h-full object-cover scale-105 animate-slow-zoom" 
              alt="Refund Policy">
         

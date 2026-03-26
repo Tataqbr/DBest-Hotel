@@ -5,7 +5,7 @@
 
     {{-- 1. HERO SECTION --}}
     <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000" 
+        <img src="{{ asset('assets/event-us.avif') }}" 
              class="absolute w-full h-full object-cover scale-105 animate-slow-zoom">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative text-center text-white px-6">
@@ -26,23 +26,20 @@
                     <p class="text-gray-500 font-light leading-relaxed mb-8">
                         D'best Hotel orchestrates high-stakes corporate summits and bespoke wedding galas with surgical precision. Our venues are engineered to reflect the gravity of your vision.
                     </p>
-                    <div class="space-y-4">
-                        <a href="#inquiry" class="block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-gold pb-1 w-max hover:text-gold transition-all">Download Floor Plans</a>
-                        <a href="#inquiry" class="block text-[10px] font-bold uppercase tracking-[0.3em] border-b border-gold pb-1 w-max hover:text-gold transition-all">View Catering Menus</a>
-                    </div>
+                    
                 </div>
 
                 {{-- Complex Image Gallery Grid --}}
                 <div class="lg:col-span-8 grid grid-cols-2 gap-6">
                     <div class="h-[500px] bg-gray-100 relative group overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <img src="{{ asset('assets/venues-1.avif') }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute bottom-8 left-8 text-white z-10">
                             <h4 class="font-bold text-sm uppercase tracking-widest">Grand Ballroom</h4>
                             <p class="text-[10px] opacity-70">Capacity: 300 Pax</p>
                         </div>
                     </div>
                     <div class="h-[500px] bg-gray-100 relative group overflow-hidden mt-16">
-                        <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <img src="{{ asset('assets/venues-2.avif') }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute bottom-8 left-8 text-white z-10">
                             <h4 class="font-bold text-sm uppercase tracking-widest">Executive Boardroom</h4>
                             <p class="text-[10px] opacity-70">Capacity: 20 Pax</p>
@@ -98,8 +95,7 @@
                     Our dedicated events team is at your disposal to craft a bespoke proposal. Whether you are hosting a gala or a summit, we ensure every technical and logistical requirement is met with perfection.
                 </p>
                 <div class="flex gap-6">
-                    <a href="/contact" class="px-10 py-4 bg-dark text-white font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500">Event Proposal</a>
-                    <a href="tel:+6222XXXXX" class="px-10 py-4 border border-dark text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-dark hover:text-white transition-all duration-500">Planner Call</a>
+                    <a href="{{ route('contact') }}" class="px-10 py-4 bg-dark text-white font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500">Event Proposal</a>
                 </div>
             </div>
             

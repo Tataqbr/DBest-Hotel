@@ -6,7 +6,7 @@
     {{-- 1. HERO SECTION (Consistent Photo-Based Layout) --}}
     <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
         {{-- Menggunakan foto interior yang bersih dan profesional --}}
-        <img src="https://i.pinimg.com/1200x/43/02/19/4302192179342c7b85e4082dc79feb86.jpg" 
+        <img src="{{ asset('assets/privacy.jpg') }}" 
              class="absolute w-full h-full object-cover scale-105 animate-slow-zoom" 
              alt="Privacy Policy">
         

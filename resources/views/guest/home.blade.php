@@ -4,7 +4,7 @@
 @section('content')
     {{-- 1. HERO SECTION - Full Screen with Elegant Typography --}}
     <section class="h-screen relative flex items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=2000" class="absolute w-full h-full object-cover" alt="d'best Hotel Bandung Hero">
+        <img src="{{ asset('assets/home.avif') }}" class="absolute w-full h-full object-cover" alt="d'best Hotel Bandung Hero">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="relative text-center text-white px-6">
             <span class="text-[10px] uppercase tracking-[0.6em] text-gold mb-6 block drop-shadow-lg">A New Standard of Urban Elegance</span>
@@ -35,7 +35,7 @@
                     <p class="text-gray-500 leading-relaxed mb-10 italic">
                         "Our mission is to provide a sanctuary where business travelers find efficiency and families find a home."
                     </p>
-                    <a href="/about" class="inline-flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.3em] group">
+                    <a href="{{ route('about-us') }}" class="inline-flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.3em] group">
                         Discover Our Story 
                         <span class="w-12 h-[1px] bg-dark group-hover:w-20 transition-all duration-500"></span>
                     </a>
@@ -43,10 +43,10 @@
             </div>
             <div class="lg:col-span-7 grid grid-cols-2 gap-6 relative">
                 <div class="mt-12 overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700" alt="Lobby">
+                    <img src="{{ asset('assets/about-home-1.avif') }}" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700" alt="Lobby">
                 </div>
                 <div class="overflow-hidden shadow-2xl">
-                    <img src="https://images.trvl-media.com/lodging/10000000/9590000/9585500/9585440/c4be5e06.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Architecture">
+                    <img src="{{ asset('assets/about-home-2.avif') }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Architecture">
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
             </div>
             
             <div class="mt-16 text-center">
-                <a href="/rooms" class="inline-block border border-dark/20 px-12 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-dark hover:text-white transition-all">Explore All Suites</a>
+                <a href="{{ route('accommodation') }}" class="inline-block border border-dark/20 px-12 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-dark hover:text-white transition-all">Explore All Suites</a>
             </div>
         </div>
     </section>
@@ -108,10 +108,10 @@
             <h2 class="font-luxury text-5xl text-dark mb-20">Hotel Facilities</h2>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
                 @foreach([
-                    ['Swimming Pool', 'Relaxing outdoor pool with city views', 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=400'],
-                    ['Fast Wi-Fi', 'High-speed internet in all areas', 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400'],
-                    ['Free Parking', 'Secure and spacious parking lots', 'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&q=80&w=400'],
-                    ['24h Service', 'Round-the-clock security & reception', 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=400']
+                    ['Swimming Pool', 'Relaxing outdoor pool with city views', asset('assets/facilities-1.avif')],
+                    ['Fast Wi-Fi', 'High-speed internet in all areas', asset('assets/facilities-2.avif')],
+                    ['Free Parking', 'Secure and spacious parking lots', asset('assets/facilities-3.avif')],
+                    ['24h Service', 'Round-the-clock security & reception', asset('assets/facilities-4.avif')]
                 ] as $fac)
                 <div class="group cursor-default text-left">
                     <div class="overflow-hidden mb-6 h-48">
@@ -130,7 +130,7 @@
         <div class="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
             <div class="relative">
                 <div class="absolute -top-10 -left-10 w-40 h-40 border border-gold/30"></div>
-                <img src="https://images.trvl-media.com/lodging/10000000/9590000/9585500/9585440/fd7d1bc6.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill" class="w-full h-[600px] object-cover shadow-2xl" alt="Dining">
+                <img src="{{ asset('assets/dining-home.avif') }}" class="w-full h-[600px] object-cover shadow-2xl" alt="Dining">
             </div>
             <div>
                 <span class="text-gold text-[10px] uppercase tracking-[0.5em] mb-6 block">Gastronomy & Business</span>
@@ -139,8 +139,8 @@
                     Experience a curated culinary journey from 06:00 to 23:00. From local Sundanese heritage to international favorites, we serve excellence on every plate. Our meeting rooms are designed with professional focus in mind, hosting up to 100 delegates with full banquet support.
                 </p>
                 <div class="flex flex-wrap gap-6">
-                    <a href="/dining" class="bg-white text-dark px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gold hover:text-white transition duration-500 shadow-xl">Explore Menu</a>
-                    <a href="/events" class="border border-white/20 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-dark transition duration-500">Banquet Details</a>
+                    <a href="{{ route('dining') }}" class="bg-white text-dark px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gold hover:text-white transition duration-500 shadow-xl">Explore Menu</a>
+                    <a href="{{ route('event') }}" class="border border-white/20 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-dark transition duration-500">Banquet Details</a>
                 </div>
             </div>
         </div>
@@ -155,10 +155,10 @@
             </div>
             <div class="mb-12 rounded-2xl overflow-hidden shadow-2xl h-[400px] grayscale hover:grayscale-0 transition-all duration-1000">
                 {{-- Mock Map Image - Ganti dengan Google Map Embed jika perlu --}}
-                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Map Location">
+                <img src="{{ asset('assets/maps.png') }}" class="w-full h-full object-cover" alt="Map Location">
             </div>
             <p class="text-gray-500 mb-12 max-w-xl mx-auto italic">Jl. Otto Iskandardinata 460, Bandung, Indonesia</p>
-            <a href="/contact" class="inline-block bg-dark text-white px-16 py-5 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-gold transition-colors duration-500 shadow-2xl">Contact Receptionist</a>
+            <a href="{{ route('contact') }}" class="inline-block bg-dark text-white px-16 py-5 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-gold transition-colors duration-500 shadow-2xl">Contact Receptionist</a>
         </div>
     </section>
 @endsection

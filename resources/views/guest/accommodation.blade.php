@@ -4,7 +4,7 @@
 @section('content')
     {{-- HEADER SECTION --}}
     <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=2000" class="absolute w-full h-full object-cover scale-105 animate-slow-zoom" alt="Luxury Accommodations">
+        <img src="{{ asset('assets/accommodation.avif') }}" class="absolute w-full h-full object-cover scale-105 animate-slow-zoom" alt="Luxury Accommodations">
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60"></div>
         <div class="relative text-center text-white px-6">
             <span class="text-[10px] uppercase tracking-[0.6em] text-gold mb-4 block animate-fade-in">Luxury Redefined</span>
@@ -80,9 +80,9 @@
 
             <div class="grid md:grid-cols-3 gap-12">
                 @foreach([
-                    ['Boardroom', '20 Pax', 'Modern AV Systems', 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600'],
-                    ['The Grand Poet', '100 Pax', 'Banqueting & Theater', 'https://images.trvl-media.com/lodging/10000000/9590000/9585500/9585440/fd7d1bc6.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill'],
-                    ['Business Suite', '10 Pax', 'Private Consultations', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600']
+                    ['Boardroom', '20 Pax', 'Modern AV Systems', asset('assets/event-1.avif')],
+                    ['The Grand Poet', '100 Pax', 'Banqueting & Theater', asset('assets/event-2.avif')],
+                    ['Business Suite', '10 Pax', 'Private Consultations', asset('assets/event-3.avif')]
                 ] as $meet)
                 <div class="group relative overflow-hidden bg-[#111] p-1 border border-white/5 hover:border-gold/30 transition-all duration-700">
                     <div class="overflow-hidden h-64 mb-8">
@@ -97,7 +97,7 @@
                         </div>
                         
                         {{-- SUBTLE HOOK FOR MEETING --}}
-                        <a href="/contact" class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-gold group-hover:text-white transition-colors duration-500">
+                        <a href="{{ route('contact') }}" class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-gold group-hover:text-white transition-colors duration-500">
                             Request Proposal <span class="ml-2 inline-block transition-transform group-hover:translate-x-2">→</span>
                         </a>
                     </div>
@@ -116,7 +116,7 @@
                 </div>
                 <h2 class="font-luxury text-4xl lg:text-5xl text-white mb-6 relative z-10">Experience the d'best Standard</h2>
                 <p class="text-white/80 mb-10 tracking-widest text-xs uppercase relative z-10">Direct booking guarantees the best available rate</p>
-                <a href="/contact" class="relative z-10 inline-block bg-white text-dark px-12 py-5 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-dark hover:text-white transition-all duration-500 shadow-xl">
+                <a href="{{ route('contact') }}" class="relative z-10 inline-block bg-white text-dark px-12 py-5 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-dark hover:text-white transition-all duration-500 shadow-xl">
                     Inquire for Direct Rates
                 </a>
             </div>
