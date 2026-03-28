@@ -29,7 +29,7 @@
     
     <div class="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
         {{-- Logo --}}
-        <a href="/">
+        <a href="{{ route('home') }}">
             <img src="{{ asset('assets/logo.png') }}" class="h-20 transition-all duration-300" :class="scrolled ? 'brightness-100' : 'brightness-0 invert'" alt="Logo">
         </a>
         

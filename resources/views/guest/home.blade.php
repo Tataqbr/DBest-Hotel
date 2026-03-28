@@ -4,7 +4,7 @@
 @section('content')
     {{-- 1. HERO SECTION - Full Screen with Elegant Typography --}}
     <section class="h-screen relative flex items-center justify-center overflow-hidden">
-        <img src="{{ asset('assets/home.avif') }}" class="absolute w-full h-full object-cover" alt="d'best Hotel Bandung Hero">
+        <img src="{{ asset('assets/home.jpeg') }}" class="absolute w-full h-full object-cover" alt="d'best Hotel Bandung Hero">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="relative text-center text-white px-6">
             <span class="text-[10px] uppercase tracking-[0.6em] text-gold mb-6 block drop-shadow-lg">A New Standard of Urban Elegance</span>
@@ -65,36 +65,55 @@
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {{-- Room Card Logic --}}
-                @php
-                $roomData = [
-                    ['Standard', '20-22 m²', 'Twins', '850.000', 'https://ik.imagekit.io/tvlk/generic-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10000253-6cc12484758bfa094a2a20a43c699dee.jpeg'],
-                    ['Superior', '24-26 m²', 'Twins/Double', '1.100.000', 'https://ik.imagekit.io/tvlk/generic-asset/Ixf4aptF5N2Qdfmh4fGGYhTN274kJXuNMkUAzpL5HuD9jzSxIGG5kZNhhHY-p7nw/hotel/asset/10000253-bc5f963cc5d35e8222f27a54df9a4401.jpeg'],
-                    ['Deluxe', '29-31 m²', 'Twins/Double', '1.350.000', 'https://ik.imagekit.io/tvlk/generic-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10000253-1024x683-FIT_AND_TRIM-3d865bf931bad8d8e484708e246c9ac2.jpeg'],
-                    ['Executive', '35-37 m²', 'Twins/Double', '1.650.000', 'https://ik.imagekit.io/tvlk/generic-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10000253-472f2b2178062895d6d62c33b851d289.jpeg']
-                ];
-                @endphp
-
-                @foreach($roomData as $room)
-                <div class="relative overflow-hidden group h-[500px]">
-                    <img src="{{ $room[4] }}" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="{{ $room[0] }}">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <h4 class="font-luxury text-3xl text-white mb-2">{{ $room[0] }}</h4>
-                        <div class="flex gap-4 text-[10px] text-gray-300 uppercase tracking-widest mb-6">
-                            <span>{{ $room[1] }}</span>
-                            <span>•</span>
-                            <span>{{ $room[2] }}</span>
-                        </div>
-                        <div class="flex items-center justify-between ">
-                            <span class="text-gold font-bold">IDR {{ $room[3] }}</span>
-                            <a href="/booking?type={{ strtolower($room[0]) }}" class="text-white text-[10px] font-bold uppercase tracking-widest border-b border-white pb-1">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    @foreach($roomTypes as $type)
+    <div class="group relative bg-white overflow-hidden h-[550px] shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+        
+        <div class="h-[60%] overflow-hidden relative bg-gray-100">
+            <img src="{{ asset('assets/room_types/' . $type->image_thumbnail) }}" 
+                 class="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110" 
+                 alt="{{ $type->name }}">
+            
+            <div class="absolute top-0 right-0 bg-black/80 backdrop-blur-sm px-4 py-2">
+                <span class="text-[9px] text-white font-bold uppercase tracking-widest flex items-center gap-2">
+                    <i class="fas fa-users text-[8px]"></i>
+                    {{ $type->capacity }} Persons
+                </span>
             </div>
+        </div>
+
+        <div class="p-8 flex flex-col justify-between h-[40%] bg-white">
+            <div>
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="w-6 h-[1px] bg-black"></div>
+                    <span class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em]">Accommodation</span>
+                </div>
+                <h4 class="font-serif text-2xl text-black uppercase tracking-tight mb-2">{{ $type->name }}</h4>
+                
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2 italic">
+                    {{ $type->description }}
+                </p>
+            </div>
+
+            <div class="flex items-end justify-between mt-4 pt-4 border-t border-gray-50">
+                <div class="flex flex-col">
+                    <span class="text-[8px] text-gray-400 uppercase tracking-widest mb-1">Price per night</span>
+                    <p class="text-black font-bold text-lg leading-none">
+                        <span class="text-gray-400 text-[10px] font-normal mr-1">IDR</span>{{ number_format($type->base_price, 0, ',', '.') }}
+                    </p>
+                </div>
+
+                <a href="{{ route('room.detail', $type->slug) }}" 
+                   class="bg-black text-white px-6 py-3 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors duration-300">
+                    View Details
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+    </div>
+    @endforeach
+</div>
             
             <div class="mt-16 text-center">
                 <a href="{{ route('accommodation') }}" class="inline-block border border-dark/20 px-12 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-dark hover:text-white transition-all">Explore All Suites</a>

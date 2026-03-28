@@ -14,61 +14,77 @@
     </section>
 
     {{-- ROOM LISTING SECTION --}}
-    <section class="py-32 bg-[#FDFDFD]">
-        <div class="max-w-[1300px] mx-auto px-6">
-            <div class="space-y-40">
-                @php
-                $rooms = [
-                    ['Standard Room', 'https://ik.imagekit.io/tvlk/generic-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10000253-6cc12484758bfa094a2a20a43c699dee.jpeg', '20-22 m²', 'Twin Bed', '850.000', 'Efficiently designed for the modern traveler, offering a seamless blend of comfort and utility.'],
-                    ['Superior Room', 'https://ik.imagekit.io/tvlk/generic-asset/Ixf4aptF5N2Qdfmh4fGGYhTN274kJXuNMkUAzpL5HuD9jzSxIGG5kZNhhHY-p7nw/hotel/asset/10000253-bc5f963cc5d35e8222f27a54df9a4401.jpeg', '24-26 m²', 'Twin or Double', '1.100.000', 'Elevate your stay with extra space and premium city views in our signature Superior suites.'],
-                    ['Deluxe Room', 'https://ik.imagekit.io/tvlk/generic-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10000253-1024x683-FIT_AND_TRIM-3d865bf931bad8d8e484708e246c9ac2.jpeg', '29-31 m²', 'Twin or Double', '1.350.000', 'The perfect balance of luxury and space, featuring expanded floor plans for ultimate relaxation.'],
-                    ['Executive Room', 'https://ik.imagekit.io/tvlk/generic-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10000253-472f2b2178062895d6d62c33b851d289.jpeg', '35-37 m²', 'King or Twin', '1.650.000', 'Our most prestigious accommodation, designed for the discerning executive seeking unparalleled comfort.']
-                ];
-                @endphp
-
-                @foreach($rooms as $index => $room)
-                <div class="group grid lg:grid-cols-12 gap-0 items-center bg-white shadow-sm hover:shadow-2xl transition-all duration-700 rounded-sm overflow-hidden border border-gray-100">
-                    {{-- Image Container --}}
-                    <div class="lg:col-span-7 overflow-hidden relative {{ $index % 2 != 0 ? 'lg:order-last' : '' }}">
-                        <img src="{{ $room[1] }}" class="w-full h-[500px] object-cover transition duration-1000 group-hover:scale-110" alt="{{ $room[0] }}">
-                        <div class="absolute top-6 left-6 bg-dark/80 backdrop-blur-md text-white px-6 py-2 text-[10px] font-bold tracking-[0.2em] uppercase border-l-2 border-gold">
-                            Featured Room
-                        </div>
-                    </div>
-
-                    {{-- Content Container --}}
-                    <div class="lg:col-span-5 p-12 lg:p-16">
-                        <h3 class="font-luxury text-4xl text-dark mb-4 group-hover:text-gold transition-colors duration-500">{{ $room[0] }}</h3>
-                        <p class="text-gray-500 font-light leading-relaxed mb-8 text-sm italic">"{{ $room[5] }}"</p>
-                        
-                        <div class="flex gap-8 mb-10 text-[10px] uppercase tracking-[0.2em] text-gray-400">
-                            <span class="flex items-center gap-2"><b class="text-dark">{{ $room[2] }}</b></span>
-                            <span class="flex items-center gap-2"><b class="text-dark">{{ $room[3] }}</b></span>
-                        </div>
-
-                        <div class="flex flex-col gap-6">
-                            <div class="flex flex-col">
-                                <span class="text-[9px] uppercase text-gray-400 tracking-widest mb-1">Nightly Rate From</span>
-                                <span class="text-3xl font-luxury text-dark">IDR {{ $room[4] }}</span>
-                            </div>
-                            
-                            {{-- HIGHLIGHTED HOOK BUTTON --}}
-                            <a href="/booking?type={{ strtolower(explode(' ', $room[0])[0]) }}" 
-                               class="relative inline-flex items-center justify-center px-10 py-5 overflow-hidden font-bold tracking-[0.3em] text-[10px] uppercase transition duration-500 ease-out border-2 border-gold group/btn shadow-xl hover:shadow-gold/20">
-                                <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 -translate-x-full bg-gold group-hover/btn:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                                <span class="absolute flex items-center justify-center w-full h-full text-gold transition-all duration-500 transform group-hover/btn:translate-x-full ease">Confirm Reservation</span>
-                                <span class="relative invisible">Confirm Reservation</span>
-                            </a>
-                        </div>
+ <section class="py-32 bg-[#FDFDFD]">
+    <div class="max-w-[1300px] mx-auto px-6">
+        <div class="space-y-40">
+            @foreach($roomTypes as $index => $type)
+            <div class="group grid lg:grid-cols-12 gap-0 items-center bg-white shadow-sm hover:shadow-2xl transition-all duration-700 rounded-sm overflow-hidden border border-gray-100">
+                
+                {{-- Image Container - Selang-seling berdasarkan Index --}}
+                <div class="lg:col-span-7 overflow-hidden relative {{ $index % 2 != 0 ? 'lg:order-last' : '' }}">
+                    {{-- Pastikan mengarah ke storage/ --}}
+                    <img src="{{ asset('assets/room_types/' . $type->image_thumbnail) }}" 
+                         class="w-full h-[500px] object-cover transition duration-1000 group-hover:scale-110" 
+                         alt="{{ $type->name }}">
+                    
+                    <div class="absolute top-6 left-6 bg-slate-900/80 backdrop-blur-md text-white px-6 py-2 text-[10px] font-bold tracking-[0.2em] uppercase border-l-2 border-gold">
+                        Featured Room
                     </div>
                 </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
 
+                {{-- Content Container --}}
+                <div class="lg:col-span-5 p-12 lg:p-16">
+                    <h3 class="font-luxury text-4xl text-slate-900 mb-4 group-hover:text-gold transition-colors duration-500">
+                        {{ $type->name }}
+                    </h3>
+                    
+                    {{-- Description --}}
+                    <p class="text-gray-500 font-light leading-relaxed mb-8 text-sm italic">
+                        "{{ $type->description }}"
+                    </p>
+                    
+                    {{-- Detail Specs --}}
+                    <div class="flex gap-8 mb-10 text-[10px] uppercase tracking-[0.2em] text-gray-400">
+                        <span class="flex items-center gap-2">
+                            <b class="text-slate-900">Max Capacity:</b> {{ $type->capacity }} Person
+                        </span>
+                        {{-- Jika ada field 'size' di DB bisa ditambahkan di sini --}}
+                        <span class="flex items-center gap-2">
+                            <b class="text-slate-900">Luxury Stay</b>
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase text-gray-400 tracking-widest mb-1">Nightly Rate From</span>
+                            <span class="text-3xl font-luxury text-slate-900">
+                                IDR {{ number_format($type->base_price, 0, ',', '.') }}
+                            </span>
+                        </div>
+                        
+                        {{-- RESERVATION BUTTON --}}
+                        <a href="{{ route('room.detail', $type->slug) }}" 
+                           class="relative inline-flex items-center justify-center px-10 py-5 overflow-hidden font-bold tracking-[0.3em] text-[10px] uppercase transition duration-500 ease-out border-2 border-gold group/btn shadow-xl hover:shadow-gold/20">
+                            
+                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 -translate-x-full bg-gold group-hover/btn:translate-x-0 ease">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </span>
+                            
+                            <span class="absolute flex items-center justify-center w-full h-full text-gold transition-all duration-500 transform group-hover/btn:translate-x-full ease">
+                                Confirm Reservation
+                            </span>
+                            
+                            <span class="relative invisible">Confirm Reservation</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
     {{-- MEETING ROOMS SECTION - Professional Focus --}}
     <section class="py-32 bg-dark text-white">
         <div class="max-w-[1200px] mx-auto px-6">

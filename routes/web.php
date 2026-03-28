@@ -5,19 +5,24 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PaymentController;
-// use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingController;
 
-Route::get('/', function () {
-    return view('guest.home');
-});
+
+Route::get('/', [GuestController::class, 'Home'])->name('home');
+Route::get('/room/{slug}', [GuestController::class, 'RoomDetail'])->name('room.detail');
+
+// Booking Flow
+Route::get('/booking/{slug}', [BookingController::class, 'showForm'])->name('booking.form');
+Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+Route::get('/booking/success/{transaction_id}', [BookingController::class, 'successPage'])->name('booking.success');
+Route::get('/booking/download/{transactionId}', [BookingController::class, 'downloadContract'])->name('booking.download');
 
 Route::get('about-us', function () {
     return view('guest.about');
 })->name('about-us');
 
-Route::get('accommodation', function () {
-    return view('guest.accommodation');
-})->name('accommodation');
+
+Route::get('accommodation', [GuestController::class, 'Accommodation'])->name('accommodation');
 
 Route::get('dining', function () {
     return view('guest.dining');
@@ -44,8 +49,30 @@ Route::get('refund', function () {
 })->name('refund');
 
 // Admin Route
-
 Route::get('Dashboard Admin', [AdminController::class, 'Dashboard'])->name('dashboard-admin');
+
+// Rooms
+Route::get('Rooms Admin', [AdminController::class, 'Rooms'])->name('rooms-admin');
+Route::post('room-types/store', [AdminController::class, 'storeType'])->name('types.store');
+Route::post('room-types/update/{id}', [AdminController::class, 'updateType'])->name('types.update');
+Route::delete('room-types/delete/{id}', [AdminController::class, 'deleteType'])->name('types.delete');
+
+Route::post('rooms/store', [AdminController::class, 'storeRoom'])->name('rooms.store');
+Route::post('rooms/update/{id}', [AdminController::class, 'updateRoom'])->name('rooms.update');
+Route::delete('rooms/delete/{id}', [AdminController::class, 'deleteRoom'])->name('rooms.delete');
+
+// Reservation
+Route::get('Reservations Admin', [AdminController::class, 'Reservations'])->name('reservations-admin');
+
+Route::get('Dining Admin', [AdminController::class, 'Dining'])->name('dining-admin');
+Route::post('/admin/dining/store', [AdminController::class, 'StoreDining'])->name('dining.store');
+Route::put('/admin/dining/update/{id}', [AdminController::class, 'UpdateDining'])->name('dining.update');
+Route::delete('/admin/dining/delete/{id}', [AdminController::class, 'DeleteDining'])->name('dining.delete');
+
+// Gateways
+Route::delete('/delete-gateway/{id}', [PaymentController::class, 'deleteGateway'])->name('delete-gateway');
+Route::post('/edit-payment-gateway/{id}', [PaymentController::class, 'editGateway'])->name('edit-payment-gateway');
+Route::post('/gateway-toggle-status/{id}', [PaymentController::class, 'toggleStatus'])->name('gateway-toggle-status');
 
 // Auth
 Route::get('Login Admin', [AuthController::class, 'showLoginSAdmin'])->name('login-admin');
