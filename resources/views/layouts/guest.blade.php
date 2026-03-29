@@ -98,7 +98,7 @@
             <h5 class="text-[10px] uppercase tracking-[0.3em] text-gold mb-6">Connect</h5>
             <ul class="text-[11px] space-y-4 text-gray-400">
                 <li>Phone: (022) 522 8899</li>
-                <li>Email: info@dbesthotel.com</li>
+                <li>Email: info@dbest-hotel.com</li>
                 <li>Check-in: 14:00 | Check-out: 12:00</li>
             </ul>
         </div>

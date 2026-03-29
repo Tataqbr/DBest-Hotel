@@ -51,4 +51,15 @@ public function RoomDetail($slug)
     return view('guest.accommodation', compact('roomTypes'));
 }
 
+public function Dining()
+{
+    // Mengambil data dari tabel dining_menus
+    $menu = DB::table('dining_menus')
+        ->where('is_available', 1)
+        ->orderBy('category', 'asc')
+        ->get()
+        ->groupBy('category'); // Mengelompokkan berdasarkan field 'category'
+
+    return view('guest.dining', compact('menu'));
+}
 }

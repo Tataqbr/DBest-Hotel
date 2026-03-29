@@ -24,9 +24,7 @@ Route::get('about-us', function () {
 
 Route::get('accommodation', [GuestController::class, 'Accommodation'])->name('accommodation');
 
-Route::get('dining', function () {
-    return view('guest.dining');
-})->name('dining');
+Route::get('dining', [GuestController::class, 'Dining'])->name('dining');                                                               
 
 Route::get('event', function () {
     return view('guest.event');
@@ -63,6 +61,8 @@ Route::delete('rooms/delete/{id}', [AdminController::class, 'deleteRoom'])->name
 
 // Reservation
 Route::get('Reservations Admin', [AdminController::class, 'Reservations'])->name('reservations-admin');
+Route::patch('/reservations/{id}/complete', [AdminController::class, 'completeBooking'])->name('reservations.complete');
+Route::delete('/reservations/{id}', [AdminController::class, 'deleteBooking'])->name('reservations.delete');
 
 Route::get('Dining Admin', [AdminController::class, 'Dining'])->name('dining-admin');
 Route::post('/admin/dining/store', [AdminController::class, 'StoreDining'])->name('dining.store');

@@ -45,49 +45,60 @@
     </section>
 
     {{-- 3. SIGNATURE MENU COLLECTIONS --}}
-    <section id="menu" class="py-32 bg-[#121212] text-white">
-        <div class="max-w-[1100px] mx-auto px-6">
-            <h2 class="font-luxury text-5xl text-center mb-24 text-gold italic">Chef's Signature Selections</h2>
-            
-            @php
-            $menu = [
-                'Sundanese Heritage' => [
-                    ['Iga Bakar Madu', '185.000', 'Australian Beef Ribs', 'Slow-braised for 12 hours with organic wild honey glaze, served with aromatic pandan-coconut rice and crisp emping.'],
-                    ['Gurame Terbang', '145.000', 'Sustainable Carp', 'Crispy "Flying" Carp sustainably sourced, paired with a zesty, house-made green mango sambal and pickled shallots.'],
-                    ['Soto Bandung Premium', '95.000', 'Brisket Consommé', 'Clear beef brisket consommé with sliced radish, soy-marinated soybeans, and fresh celery, simmered with galangal aromatics.']
-                ],
-                'International Fusion' => [
-                    ['Wagyu Ribeye Steak', '385.000', 'MS5 Wagyu Ribeye', 'Premium MS5 Wagyu, roasted seasonal root vegetables, truffle-infused potato mousseline, and a red wine reduction.'],
-                    ['Truffle Mushroom Risotto', '135.000', 'Arborio Rice', 'Creamy arborio rice with wild mountain forest mushrooms, finished with 24-month aged parmesan and white truffle essence.'],
-                    ['Atlantic Salmon Crust', '175.000', 'Atlantic Salmon', 'Herb-dill breadcrumb crust, lemon-butter emulsion, served on a bed of citrus-zest quinoa and butter-poached asparagus.']
-                ]
-            ];
-            @endphp
-
-            <div class="space-y-32">
-                @foreach($menu as $category => $items)
-                <div>
-                    <h3 class="font-luxury text-4xl mb-16 border-b border-white/10 pb-6">{{ $category }}</h3>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-                        @foreach($items as $item)
-                        <div class="group cursor-pointer">
-                            <div class="h-64 overflow-hidden mb-6 border border-white/10">
-                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+<section id="menu" class="py-32 bg-[#121212] text-white">
+    <div class="max-w-[1100px] mx-auto px-6">
+        <h2 class="font-luxury text-5xl text-center mb-24 text-gold italic">Chef's Signature Selections</h2>
+        
+        <div class="space-y-32">
+            {{-- Loop Pertama: Berdasarkan Kategori --}}
+            @foreach($menu as $category => $items)
+            <div>
+                <h3 class="font-luxury text-4xl mb-16 border-b border-white/10 pb-6 uppercase tracking-widest">
+                    {{ $category }}
+                </h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    {{-- Loop Kedua: Item di dalam Kategori tersebut --}}
+                    @foreach($items as $item)
+                    <div class="group cursor-default">
+                        {{-- Image Container --}}
+                        <div class="h-64 overflow-hidden mb-6 border border-white/10 relative">
+                            <img src="{{ asset('assets/dining/' . $item->image_path) }}" 
+                                 class="w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110"
+                                 alt="{{ $item->name }}">
+                            
+                            {{-- Overlay jika stok habis (jaga-jaga jika is_available logic ada di view) --}}
+                            @if(!$item->is_available)
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+                                <span class="text-[10px] tracking-[0.3em] uppercase font-bold text-white border border-white px-4 py-2">Sold Out</span>
                             </div>
-                            <div class="flex justify-between items-baseline mb-2">
-                                <h5 class="font-bold text-lg group-hover:text-gold transition-colors">{{ $item[0] }}</h5>
-                                <span class="text-gold font-mono text-sm">IDR {{ $item[1] }}</span>
-                            </div>
-                            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-4">{{ $item[2] }}</p>
-                            <p class="text-[12px] text-gray-400 leading-relaxed italic">{{ $item[3] }}</p>
+                            @endif
                         </div>
-                        @endforeach
+
+                        {{-- Header Menu --}}
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h5 class="font-bold text-lg group-hover:text-gold transition-colors duration-500">
+                                {{ $item->name }}
+                            </h5>
+                            <span class="text-gold font-mono text-sm">
+                                IDR {{ number_format($item->price, 0, ',', '.') }}
+                            </span>
+                        </div>
+
+                        {{-- Description --}}
+                        <p class="text-[12px] text-gray-400 leading-relaxed italic font-light line-clamp-3">
+                            {{ $item->description }}
+                        </p>
+                        
+                        <div class="mt-4 h-[1px] w-0 group-hover:w-full bg-gold/30 transition-all duration-700"></div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
  {{-- 4. REFINED CONCIERGE & OPERATIONS (Light Theme) --}}
 <section class="py-32 bg-gray-50 relative">

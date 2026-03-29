@@ -53,19 +53,7 @@
                     </div>
                 </div>
 
-                {{-- DOWNLOAD SECTION --}}
-                <div class="mt-16 p-8 border border-gray-100 bg-gray-50 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div>
-                        <h4 class="font-bold text-dark uppercase tracking-[0.2em] text-[11px] mb-2">Policy Document</h4>
-                        <p class="text-xs text-gray-500">Download the full Refund & Cancellation Policy for your records.</p>
-                    </div>
-                    <a href="{{ asset('files/dbest-refund-policy.pdf') }}" 
-                       class="px-8 py-3 bg-dark text-white text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 flex items-center gap-2"
-                       download>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Download PDF
-                    </a>
-                </div>
+
 
                 {{-- Contact Block --}}
                 <div class="pt-8 border-t border-gray-100">

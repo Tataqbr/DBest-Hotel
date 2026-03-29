@@ -137,7 +137,7 @@
                 <div class="flex items-center gap-6">
                     <div class="text-right hidden sm:block">
                         <p class="text-xs font-bold text-dark uppercase tracking-tight">Main Administrator</p>
-                        <p class="text-[10px] text-gray-400">admin@dbesthotel.com</p>
+                        <p class="text-[10px] text-gray-400">info@dbest-hotel.com</p>
                     </div>
                     <div class="w-10 h-10 bg-dark rounded-xl flex items-center justify-center text-gold font-bold shadow-lg shadow-black/10 border border-white/10">
                         AD

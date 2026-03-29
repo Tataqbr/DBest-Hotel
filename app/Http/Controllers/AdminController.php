@@ -156,6 +156,55 @@ public function updateType(Request $request, $id)
     return view('super-admin.reservation', compact('bookings'));
 }
 
+public function completeBooking($id)
+{
+    DB::beginTransaction();
+    try {
+        $booking = DB::table('bookings')->where('id', $id)->first();
+
+        if (!$booking) {
+            return back()->with('error', 'Data reservasi tidak ditemukan.');
+        }
+
+        // 1. Update status booking jadi 'completed'
+        DB::table('bookings')->where('id', $id)->update([
+            'booking_status' => 'completed',
+            'updated_at' => now()
+        ]);
+
+        // 2. Cari room_id yang terkait dan set kembali ke 'available'
+        DB::table('rooms')->where('id', $booking->room_id)->update([
+            'status' => 'available',
+            'updated_at' => now()
+        ]);
+
+        DB::commit();
+        return back()->with('success', 'Tamu telah Check-out. Kamar kini tersedia kembali.');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    }
+}
+
+public function deleteBooking($id)
+{
+    // Cari data sebelum dihapus untuk ambil room_id
+    $booking = DB::table('bookings')->where('id', $id)->first();
+
+    if ($booking) {
+        // Jika booking yang dihapus masih aktif, pastikan kamar balik available
+        if ($booking->booking_status != 'completed' && $booking->booking_status != 'cancelled') {
+            DB::table('rooms')->where('id', $booking->room_id)->update(['status' => 'available']);
+        }
+        
+        DB::table('bookings')->where('id', $id)->delete();
+        return back()->with('success', 'Data reservasi berhasil dihapus.');
+    }
+
+    return back()->with('error', 'Data tidak ditemukan.');
+}
+
+
 public function Dining()
     {
         $menus = DB::table('dining_menus')->orderBy('created_at', 'desc')->get();

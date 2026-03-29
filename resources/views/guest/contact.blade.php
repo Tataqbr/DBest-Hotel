@@ -58,7 +58,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-dark text-[10px] uppercase tracking-[0.2em] mb-2">Digital Correspondence</h4>
-                                <p class="text-sm text-gray-500 font-light">info@dbesthotel.com <br>reservation@dbesthotel.com</p>
+                                <p class="text-sm text-gray-500 font-light">info@dbest-hotel.com</p>
                             </div>
                         </div>
                     </div>
