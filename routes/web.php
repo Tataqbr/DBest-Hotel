@@ -21,6 +21,9 @@ Route::get('about-us', function () {
     return view('guest.about');
 })->name('about-us');
 
+Route::get('certification', function () {
+    return view('guest.certification');
+})->name('certification');
 
 Route::get('accommodation', [GuestController::class, 'Accommodation'])->name('accommodation');
 

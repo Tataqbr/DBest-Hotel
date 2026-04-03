@@ -90,6 +90,7 @@
                 <li><a href="{{ route('dining') }}" class="hover:text-gold transition">D'Poet Restaurant</a></li>
                 <li><a href="{{ route('event') }}" class="hover:text-gold transition">Banquet & Meeting</a></li>
                 <li><a href="{{ route('contact') }}" class="hover:text-gold transition">Inquiries & Contact</a></li>
+                <li><a href="{{ route('certification') }}" class="hover:text-gold transition">Certification</a></li>
             </ul>
         </div>
 
